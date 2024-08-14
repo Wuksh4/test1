@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Location Grid</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="filter-container">
+      <button id="reset-filter">Reset Filters</button>
+      <div class="filter-group">
+        <h3>Select Cities:</h3>
+        <div class="filter-checkboxes">
+          <label>
+            <input type="checkbox" class="city-filter" value="Beograd" />
+            Belgrade
+          </label>
+          <label>
+            <input type="checkbox" class="city-filter" value="Novi Sad" />
+            Novi Sad
+          </label>
+          <label>
+            <input type="checkbox" class="city-filter" value="Nis" />
+            Nis
+          </label>
+          <label>
+            <input type="checkbox" class="city-filter" value="Kopaonik" />
+            Kopaonik
+          </label>
+          <label>
+            <input type="checkbox" class="city-filter" value="Krusevac" />
+            Krusevac
+          </label>
+        </div>
+      </div>
+      <input type="text" id="search-input" placeholder="Search by street" />
+      <button id="generate-link">Generate Link</button>
+      <div id="generated-link-container"></div>
+    </div>
+
+    <div class="grid-container" id="locations-grid">
+      <!-- Data from Firebase will be populated here -->
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script>
+      // Firebase Configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyB8qfyLmdHq55VRz8btyBfxwS407LdvHAI",
+        authDomain: "mailv2-8c71a.firebaseapp.com",
+        databaseURL: "https://mailv2-8c71a-default-rtdb.firebaseio.com",
+        projectId: "mailv2-8c71a",
+        storageBucket: "mailv2-8c71a.appspot.com",
+        messagingSenderId: "968054627110",
+        appId: "1:968054627110:web:d14d7b20f3c35e1229bfe7",
+      };
+
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      const database = firebase.database();
+
+      const locationsGrid = document.getElementById("locations-grid");
+
+      function fetchLocations(cityFilters = [], searchText = "") {
+        locationsGrid.innerHTML = "";
+        database.ref("locations").once("value", (snapshot) => {
+          const locations = snapshot.val();
+          if (locations) {
+            for (let id in locations) {
+              const data = locations[id];
+              const cityMatches =
+                !cityFilters.length || cityFilters.includes(data.city);
+              const streetMatches = data.streetAddress
+                .toLowerCase()
+                .includes(searchText.toLowerCase());
+
+              if (cityMatches && streetMatches) {
+                const locationBox = document.createElement("div");
+                locationBox.className = "location-box";
+                locationBox.innerHTML = `
+                  <div class="img" style="background-image: url('${data.imageUrl}');"></div>
+                  <h4>${data.city}</h4>
+                  <h3>${data.streetAddress}</h3>
+                  <p>${data.description}</p>`;
+                locationsGrid.appendChild(locationBox);
+              }
+            }
+          }
+        });
+      }
+
+      function updateURL(selectedCities) {
+        const params = new URLSearchParams();
+        if (selectedCities.length) {
+          params.set("cities", selectedCities.join(","));
+        }
+        const searchText = document.getElementById("search-input").value;
+        if (searchText) {
+          params.set("search", searchText);
+        }
+        const newUrl = `${window.location.pathname}?${params.toString()}`;
+        window.history.replaceState({}, "", newUrl);
+      }
+
+      function handleFiltersAndSearch() {
+        const selectedCities = Array.from(
+          document.querySelectorAll(".city-filter:checked")
+        ).map((cb) => cb.value);
+        const searchText = document.getElementById("search-input").value;
+        fetchLocations(selectedCities, searchText);
+        updateURL(selectedCities);
+      }
+
+      function applyFiltersFromURL() {
+        const params = new URLSearchParams(window.location.search);
+        const selectedCities = params.get("cities")?.split(",") || [];
+        const searchText = params.get("search") || "";
+        const isGeneratedMode = params.get("mode") === "generated";
+
+        document.querySelectorAll(".city-filter").forEach((checkbox) => {
+          checkbox.checked = selectedCities.includes(checkbox.value);
+          if (isGeneratedMode && !checkbox.checked) {
+            checkbox.parentElement.style.display = "none"; // Hide unchecked checkboxes
+          }
+        });
+
+        document.getElementById("search-input").value = searchText;
+
+        fetchLocations(selectedCities, searchText);
+
+        if (isGeneratedMode) {
+          document.getElementById("generate-link").style.display = "none"; // Hide the generate link button
+        }
+      }
+
+      function generateLink() {
+        const selectedCities = Array.from(
+          document.querySelectorAll(".city-filter:checked")
+        ).map((cb) => cb.value);
+        const searchText = document.getElementById("search-input").value;
+
+        const params = new URLSearchParams();
+        if (selectedCities.length) {
+          params.set("cities", selectedCities.join(","));
+        }
+        if (searchText) {
+          params.set("search", searchText);
+        }
+        params.set("mode", "generated");
+
+        const newUrl = `${window.location.origin}${
+          window.location.pathname
+        }?${params.toString()}`;
+        const generatedLinkContainer = document.getElementById(
+          "generated-link-container"
+        );
+        generatedLinkContainer.innerHTML = `
+          <p>Generated Link:</p>
+          <a href="${newUrl}" target="_blank">${newUrl}</a>`;
+      }
+
+      document.querySelectorAll(".city-filter").forEach((checkbox) => {
+        checkbox.addEventListener("change", handleFiltersAndSearch);
+      });
+
+      document
+        .getElementById("search-input")
+        .addEventListener("input", handleFiltersAndSearch);
+
+      document.getElementById("reset-filter").addEventListener("click", () => {
+        document
+          .querySelectorAll(".city-filter")
+          .forEach((checkbox) => (checkbox.checked = false));
+        document.getElementById("search-input").value = "";
+        fetchLocations();
+        updateURL([]);
+      });
+
+      document
+        .getElementById("generate-link")
+        .addEventListener("click", generateLink);
+
+      applyFiltersFromURL();
+    </script>
+  </body>
+</html>

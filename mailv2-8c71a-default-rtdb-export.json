@@ -1,0 +1,161 @@
+{
+  "locations": {
+    "location1": {
+      "city": "Novi Sad",
+      "description": "Random opis.",
+      "imageUrl": "https://i.ytimg.com/vi/1pWzJwnxEdo/maxresdefault.jpg",
+      "streetAddress": "futoska pijaca"
+    },
+    "location2": {
+      "city": "Novi Sad",
+      "description": "Random opis.",
+      "imageUrl": "https://i.ytimg.com/vi/1pWzJwnxEdo/maxresdefault.jpg",
+      "streetAddress": "centar"
+    },
+    "location3": {
+      "city": "Novi Sad",
+      "description": "Random opis.",
+      "imageUrl": "https://i.ytimg.com/vi/1pWzJwnxEdo/maxresdefault.jpg",
+      "streetAddress": "spens"
+    },
+
+    "location4": {
+      "city": "Novi Sad",
+      "description": "Random opis.",
+      "imageUrl": "https://i.ytimg.com/vi/1pWzJwnxEdo/maxresdefault.jpg",
+      "streetAddress": "bulevar evrope"
+    },
+
+    "location5": {
+      "city": "Novi Sad",
+      "description": "Random opis.",
+      "imageUrl": "https://i.ytimg.com/vi/1pWzJwnxEdo/maxresdefault.jpg",
+      "streetAddress": "limanska pijaca"
+    },
+
+    "location6": {
+      "city": "Novi Sad",
+      "description": "Random opis.",
+      "imageUrl": "https://i.ytimg.com/vi/1pWzJwnxEdo/maxresdefault.jpg",
+      "streetAddress": "merkator"
+    },
+
+    "location7": {
+      "city": "Novi Sad",
+      "description": "Random opis.",
+      "imageUrl": "https://i.ytimg.com/vi/1pWzJwnxEdo/maxresdefault.jpg",
+      "streetAddress": "sajam"
+    },
+
+    "location8": {
+      "city": "Novi Sad",
+      "description": "Random opis.",
+      "imageUrl": "https://i.ytimg.com/vi/1pWzJwnxEdo/maxresdefault.jpg",
+      "streetAddress": "futoski put"
+    },
+
+    "location9": {
+      "city": "Nis",
+      "description": "Random opis.",
+      "imageUrl": "https://skupstinanisa.rs/wp-content/uploads/2022/05/gradNis.jpg",
+      "streetAddress": "cenatar 1"
+    },
+    "location10": {
+      "city": "Nis",
+      "description": "Random opis.",
+      "imageUrl": "https://skupstinanisa.rs/wp-content/uploads/2022/05/gradNis.jpg",
+      "streetAddress": "centar 2"
+    },
+
+    "location11": {
+      "city": "Nis",
+      "description": "Random opis.",
+      "imageUrl": "https://skupstinanisa.rs/wp-content/uploads/2022/05/gradNis.jpg",
+      "streetAddress": "crveni pevac"
+    },
+    "location12": {
+      "city": "Nis",
+      "description": "Random opis.",
+      "imageUrl": "https://skupstinanisa.rs/wp-content/uploads/2022/05/gradNis.jpg",
+      "streetAddress": "kralja stefana prvovencanog"
+    },
+    "location13": {
+      "city": "Kopaonik",
+      "description": "Random opis.",
+      "imageUrl": "https://www.sedmicaplus.rs/images/zimovanje/kopaonik/kopaonik-logo.jpg",
+      "streetAddress": "jat"
+    },
+    "location14": {
+      "city": "Kopaonik",
+      "description": "Random opis.",
+      "imageUrl": "https://www.sedmicaplus.rs/images/zimovanje/kopaonik/kopaonik-logo.jpg",
+      "streetAddress": "dolina sportova"
+    },
+    "location15": {
+      "city": "Kopaonik",
+      "description": "Random opis.",
+      "imageUrl": "https://www.sedmicaplus.rs/images/zimovanje/kopaonik/kopaonik-logo.jpg",
+      "streetAddress": "hotel gorski"
+    },
+    "location16": {
+      "city": "Krusevac",
+      "description": "Random opis.",
+      "imageUrl": "https://www.gradbijeljina.org/UcitaneSlike/admin/Vodic/3_Krusevac.png",
+      "streetAddress": "centar"
+    },
+    "location17": {
+      "city": "Krusevac",
+      "description": "Random opis.",
+      "imageUrl": "https://www.gradbijeljina.org/UcitaneSlike/admin/Vodic/3_Krusevac.png",
+      "streetAddress": "gazimestanska"
+    },
+    "location18": {
+      "city": "Krusevac",
+      "description": "Random opis.",
+      "imageUrl": "https://www.gradbijeljina.org/UcitaneSlike/admin/Vodic/3_Krusevac.png",
+      "streetAddress": "krfska"
+    },
+    "location19": {
+      "city": "Beograd",
+      "description": "Random opis.",
+      "imageUrl": "https://getlogo.net/wp-content/uploads/2021/02/city-of-belgrade-logo-vector.png",
+      "streetAddress": "vukov spomenik"
+    },
+    "location20": {
+      "city": "Beograd",
+      "description": "Random opis.",
+      "imageUrl": "https://getlogo.net/wp-content/uploads/2021/02/city-of-belgrade-logo-vector.png",
+      "streetAddress": "rakovica"
+    },
+    "location21": {
+      "city": "Beograd",
+      "description": "Random opis.",
+      "imageUrl": "https://getlogo.net/wp-content/uploads/2021/02/city-of-belgrade-logo-vector.png",
+      "streetAddress": "merkator2"
+    },
+    "location22": {
+      "city": "Beograd",
+      "description": "Random opis.",
+      "imageUrl": "https://getlogo.net/wp-content/uploads/2021/02/city-of-belgrade-logo-vector.png",
+      "streetAddress": "bulevar zorana djindjica"
+    },
+    "location23": {
+      "city": "Beograd",
+      "description": "Random opis.",
+      "imageUrl": "https://getlogo.net/wp-content/uploads/2021/02/city-of-belgrade-logo-vector.png",
+      "streetAddress": "knez mihailova"
+    },
+    "location24": {
+      "city": "Beograd",
+      "description": "Random opis.",
+      "imageUrl": "https://getlogo.net/wp-content/uploads/2021/02/city-of-belgrade-logo-vector.png",
+      "streetAddress": "posezka"
+    },
+    "location25": {
+      "city": "Beograd",
+      "description": "Random opis.",
+      "imageUrl": "https://getlogo.net/wp-content/uploads/2021/02/city-of-belgrade-logo-vector.png",
+      "streetAddress": "airport city"
+    }
+  }
+}
